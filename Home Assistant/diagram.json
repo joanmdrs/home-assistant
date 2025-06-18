@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "Joan Medeiros",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 80.75,
+      "left": 115.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 23.2,
+      "left": 173.9,
+      "attrs": { "common": "cathode" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 29.1, "left": -111, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.3", "r1:1", "black", [ "h0" ] ],
+    [ "r1:2", "rgb1:COM", "black", [ "v0", "h18" ] ],
+    [ "esp:21", "rgb1:R", "red", [ "h81.64" ] ],
+    [ "rgb1:G", "esp:19", "green", [ "v28.8", "h-99.54" ] ],
+    [ "esp:18", "rgb1:B", "blue", [ "h110.44" ] ],
+    [ "esp:5V", "dht1:VCC", "red", [ "h-100.61" ] ],
+    [ "esp:GND.1", "dht1:GND", "black", [ "h-71.81" ] ],
+    [ "esp:13", "dht1:SDA", "gold", [ "h-91.01" ] ]
+  ],
+  "dependencies": {}
+}
